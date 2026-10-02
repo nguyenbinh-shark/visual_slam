@@ -1,0 +1,19 @@
+# RTAB-Map tuning for Raspberry Pi 5 (CPU only). run_slam.sh loads it automatically on the Pi.
+# RTAB-Map parameters are strings in ROS 2: keep the quotes.
+/**:
+  ros__parameters:
+    # Odometry: fewer features = faster frame-to-map tracking on the Pi's CPU.
+    Odom/Strategy: "0"            # 0 = frame-to-map
+    Vis/MaxFeatures: "600"        # default 1000
+
+    # Loop closure detection.
+    Kp/MaxFeatures: "400"         # default 500
+    Rtabmap/DetectionRate: "1"    # Hz
+
+    # Occupancy grid from depth. D435i depth gets noisy beyond ~4 m.
+    Grid/RangeMax: "4.0"
+    Grid/CellSize: "0.05"
+
+    # Uncomment once the camera is mounted on a ground robot (forces planar x, y, yaw motion).
+    # Do NOT enable for handheld tests.
+    # Reg/Force3DoF: "true"

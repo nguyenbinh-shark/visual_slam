@@ -1,0 +1,8 @@
+# Maps, recordings and logs stay on the machine (~/slam_data), never in git.
+*.db
+*.bag
+*.mcap
+*.ply
+*.pgm
+__pycache__/
+*.pyc
